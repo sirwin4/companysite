@@ -143,7 +143,19 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 SOCIAL_AUTH_FACEBOOK_KEY = '160442458239858'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '5c3ec0d09dfb4576e5dde66f7367f2b8'  # App Secret
 
-LOGIN_REDIRECT_URL = 'blog-home'
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+    'users.pipeline.load_user',
+)
+#acquire user information from social media profile for access in django app
+
+LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 

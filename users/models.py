@@ -7,7 +7,7 @@ class Profile(models.Model):
 	image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 	
 	def __str__(self):
-		return f'{self.user.username} Profile' 
+		return f'{self.user.first_name} {self.user.last_name} Profile' 
 	
 	def save(self, force_insert=False, force_update=False, using=None):
 		super().save()

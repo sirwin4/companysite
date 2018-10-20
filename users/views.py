@@ -5,6 +5,7 @@ from .forms import AddressForm, UserRegisterForm, UserUpdateForm, ProfileUpdateF
 from django.views import generic
 from . import forms
 from django.views.generic import ListView, CreateView, UpdateView
+from django.contrib.auth.models import User
 
 def register(request):
     if request.method == 'POST':
@@ -42,6 +43,8 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context)
+
+
 def address(request):
     if request.method == 'POST':
         a_form = AddressForm((request.POST))
